@@ -1,0 +1,603 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+%
+\documentclass[tikz,border=2pt]{standalone}
+
+%\pagestyle{headings}
+%
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+%\usepackage{todonotes}
+%\usepackage{nicefrac}
+%\usepackage{cleveref}
+%\usepackage{booktabs}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{fit}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+
+
+
+%% code listing stuff
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+
+\usepackage[ruled,vlined,linesnumbered,algonl]{algorithm2e}
+\SetEndCharOfAlgoLine{}
+\SetKwComment{Comment}{\footnotesize$\triangleright$\ }{}
+\newcommand\mycommfont[1]{\footnotesize\rmfamily\textcolor{DarkPowderBlue}{#1}}
+\SetCommentSty{mycommfont}
+
+%%% end code listing stuff
+
+\usepackage{xcolor}
+\definecolor[named]{ACMBlue}{cmyk}{1,0.1,0,0.1}
+\definecolor[named]{ACMYellow}{cmyk}{0,0.16,1,0}
+\definecolor[named]{ACMOrange}{cmyk}{0,0.42,1,0.01}
+\definecolor[named]{ACMRed}{cmyk}{0,0.90,0.86,0}   
+\definecolor[named]{ACMLightRed}{cmyk}{0,0,0,0.35}
+\definecolor[named]{ACMLightBlue}{cmyk}{0.49,0.01,0,0}
+\definecolor[named]{ACMGreen}{cmyk}{0.20,0,1,0.19}
+\definecolor[named]{ACMPurple}{cmyk}{0.55,0.6,0.1,0.15}
+\definecolor[named]{ACMPurple2}{cmyk}{0.04,0.7,0.01,0.01}
+\definecolor[named]{ACMPurple3}{cmyk}{0.04,0.7,0.01,0.01}
+\definecolor[named]{ACMDarkBlue}{cmyk}{1,0.58,0,0.21}
+
+\definecolor{redorange}{rgb}{0.878431, 0.235294, 0.192157}
+\definecolor{lightblue}{rgb}{0.552941, 0.72549, 0.792157}
+\definecolor{clearyellow}{rgb}{0.964706, 0.745098, 0}
+\definecolor{midyellow}{rgb}{0.764706, 0.645098, 0.5}
+\definecolor{clearorange}{rgb}{0.917647, 0.462745, 0}
+\definecolor{mildgray}{rgb}{0.54902, 0.509804, 0.47451}
+\definecolor{softblue}{rgb}{0.643137, 0.858824, 0.909804}
+\definecolor{bluegray}{rgb}{0.141176, 0.313725, 0.603922}
+\definecolor{lightgreen}{rgb}{0.709804, 0.741176, 0}
+\definecolor{redpurple}{rgb}{0.835294, 0, 0.196078}
+\definecolor{midblue}{rgb}{0, 0.592157, 0.662745}
+\definecolor{clearpurple}{rgb}{0.67451, 0.0784314, 0.352941}
+\definecolor{browngreen}{rgb}{0.333333, 0.313725, 0.145098}
+\definecolor{darkestpurple}{rgb}{0.396078, 0.113725, 0.196078}
+\definecolor{greypurple}{rgb}{0.294118, 0.219608, 0.298039}
+\definecolor{darkturqoise}{rgb}{0, 0.239216, 0.298039}
+\definecolor{darkbrown}{rgb}{0.305882, 0.211765, 0.160784}
+\definecolor{midgreen}{rgb}{0.560784, 0.6, 0.243137}
+\definecolor{darkred}{rgb}{0.576471, 0.152941, 0.172549}
+\definecolor{darkpurple}{rgb}{0.313725, 0.027451, 0.470588}
+\definecolor{darkestblue}{rgb}{0, 0.156863, 0.333333}
+\definecolor{lightpurple}{rgb}{0.776471, 0.690196, 0.737255}
+\definecolor{softgreen}{rgb}{0.733333, 0.772549, 0.572549}
+\definecolor{offwhite}{rgb}{0.839216, 0.823529, 0.768627}
+\definecolor{brightgreen}{rgb}{0.85, 0.98, 0.01}
+
+
+\newcommand{\cola}{darkpurple} %1
+\newcommand{\colb}{midgreen!60!brightgreen} %2
+\newcommand{\colc}{midblue} %3
+\newcommand{\cold}{clearorange} %4
+\newcommand{\cole}{redorange} %5
+\newcommand{\colf}{clearyellow} %6
+\newcommand{\colg}{midyellow!80!redorange} %7
+
+
+\newcommand{\tr}{\textsc{TR}}
+\newcommand{\ptr}{\textsc{ptr}}
+
+\newcommand{\step}[2]{\langle\mathsf{#1},#2\rangle}
+
+\newcommand{\numa}{\textcolor{white}{1}}
+\newcommand{\numb}{\textcolor{white}{2}}
+\newcommand{\numc}{\textcolor{white}{3}}
+\newcommand{\numd}{\textcolor{white}{4}}
+\newcommand{\nume}{\textcolor{white}{5}}
+\newcommand{\numf}{\textcolor{white}{6}}
+\newcommand{\numg}{\textcolor{white}{7}}
+\newcommand{\colh}{midgreen}
+\newcommand{\numh}{\textcolor{white}{8}}
+\newcommand{\coli}{darkturqoise!70!white}
+\newcommand{\numi}{\textcolor{white}{9}}
+\newcommand{\colj}{darkred}
+\newcommand{\numj}{\textcolor{white}{\!10\!}}
+\newcommand{\colk}{lightpurple}
+\newcommand{\numk}{\textcolor{white}{\!11\!}}
+\newcommand{\coll}{lightblue}
+\newcommand{\numl}{\textcolor{white}{\!12\!}}
+\newcommand{\colm}{greypurple!70!white}
+\newcommand{\numm}{\textcolor{white}{\!13\!}}
+\newcommand{\coln}{softgreen}
+\newcommand{\numn}{\textcolor{white}{\!14\!}}
+
+% 					\node[draw, minimum width=3mm, minimum height=3mm, fill=#4, opacity=0.5] (\i\j) at (#2 + 0.3*\j-0.3*\i, #3 + 0.3*#1 - 0.3*\i) {};
+% 					\node[draw, minimum width=3mm, minimum height=3mm, fill=#4, opacity=0.5] (\i\j) at (#2 + 0.3*\j-0.3*\i, #3 + -0.3*#1+0.3*\i) {};
+
+\newcommand{\manhattanball}[4]{
+ 		\foreach [evaluate=\i as \r using 2*\i]\i in {0,...,#1} {
+ 				\foreach \j in {0, ..., \r} {
+ 					\node[draw, very thick, minimum width=10mm, minimum height=10mm, fill=#4, opacity=0.5] (\i\j) at (#2 + \j - \i, #3 + #1 - \i) {};
+				}		
+ 			}
+ 			\pgfmathsetmacro{\dd}{#1 - 1}
+ 			\foreach [evaluate=\i as \r using 2*\i]\i in {0,...,\dd} {
+ 				\foreach \j in {0, ..., \r} {
+ 					\node[draw, very thick, minimum width=10mm, minimum height=10mm, fill=#4, opacity=0.5] (\i\j) at (#2 + \j - \i, #3 - #1+\i) {};
+				}		
+ 			}
+ }
+ 
+ \newcommand{\lowoponesquare}[5]{
+ 	\node[fill=#3, opacity=0.2, minimum width=#5, minimum height=#5] (#1#2) at (#1, #2) {#4};
+ }
+ 
+  \newcommand{\highoponesquare}[5]{
+ 	\node[fill=#3, opacity=0.6, minimum width=#5, thick, minimum height=#5] (#1#2) at (#1, #2) {{\huge \textbf{#4}}};
+ }
+
+ 
+\newcommand{\onesquare}[5]{
+ 	\node[fill=#3, opacity=1, minimum width=#5, minimum height=#5] (#1#2) at (#1, #2) {#4};
+ }
+ 
+ \newcommand{\dashedonesquare}[4]{
+ 	\node[fill=#3, opacity=1, minimum width=#4, minimum height=#4] (#1#2) at (#1, #2) {};
+    \draw (#1-0.25, #2-0.25) -- (#1 + 0.25, #2 + 0.25);
+    \draw (#1+0.25, #2-0.25) -- (#1 - 0.25, #2 + 0.25);
+ }
+ 
+ \begin{document}
+
+	\begin{tikzpicture}[rotate=45,transform shape]
+\onesquare{0.0}{7.0}{\colb}{\numb}{5mm}
+\onesquare{0.5}{6.5}{\colc}{\numc}{5mm}
+\onesquare{0.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{0.5}{7.5}{\colg}{\numg}{5mm}
+\onesquare{1.0}{6.0}{\colh}{\numh}{5mm}
+\onesquare{1.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{1.0}{7.0}{\coli}{\numi}{5mm}
+\onesquare{1.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{1.0}{8.0}{\colb}{\numb}{5mm}
+\onesquare{1.5}{5.5}{\colc}{\numc}{5mm}
+\onesquare{1.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{1.5}{6.5}{\colb}{\numb}{5mm}
+\onesquare{1.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{1.5}{7.5}{\colc}{\numc}{5mm}
+\onesquare{1.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{1.5}{8.5}{\colj}{\numj}{5mm}
+\onesquare{2.0}{5.0}{\colb}{\numb}{5mm}
+\onesquare{2.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{2.0}{6.0}{\colf}{\numf}{5mm}
+\onesquare{2.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{2.0}{7.0}{\cole}{\nume}{5mm}
+\onesquare{2.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{2.0}{8.0}{\coll}{\numl}{5mm}
+\onesquare{2.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{2.0}{9.0}{\colb}{\numb}{5mm}
+\onesquare{2.5}{4.5}{\colc}{\numc}{5mm}
+\onesquare{2.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{2.5}{5.5}{\cold}{\numd}{5mm}
+\onesquare{2.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{2.5}{6.5}{\colc}{\numc}{5mm}
+\onesquare{2.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{2.5}{7.5}{\colb}{\numb}{5mm}
+\onesquare{2.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{2.5}{8.5}{\colc}{\numc}{5mm}
+\onesquare{2.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{2.5}{9.5}{\colg}{\numg}{5mm}
+\onesquare{3.0}{4.0}{\colb}{\numb}{5mm}
+\onesquare{3.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{3.0}{5.0}{\coln}{\numn}{5mm}
+\onesquare{3.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{3.0}{6.0}{\colb}{\numb}{5mm}
+\onesquare{3.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{3.0}{7.0}{\colk}{\numk}{5mm}
+\onesquare{3.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{3.0}{8.0}{\cold}{\numd}{5mm}
+\onesquare{3.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{3.0}{9.0}{\cole}{\nume}{5mm}
+\onesquare{3.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{3.0}{10.0}{\coli}{\numi}{5mm}
+\onesquare{3.5}{3.5}{\colc}{\numc}{5mm}
+\onesquare{3.5}{4.0}{\cola}{\numa}{5mm}
+\onesquare{3.5}{4.5}{\coli}{\numi}{5mm}
+\onesquare{3.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{3.5}{5.5}{\cole}{\nume}{5mm}
+\onesquare{3.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{3.5}{6.5}{\colg}{\numg}{5mm}
+\onesquare{3.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{3.5}{7.5}{\colc}{\numc}{5mm}
+\onesquare{3.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{3.5}{8.5}{\colb}{\numb}{5mm}
+\onesquare{3.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{3.5}{9.5}{\colc}{\numc}{5mm}
+\onesquare{3.5}{10.0}{\cola}{\numa}{5mm}
+\onesquare{3.5}{10.5}{\colb}{\numb}{5mm}
+\onesquare{4.0}{3.0}{\colh}{\numh}{5mm}
+\onesquare{4.0}{3.5}{\cola}{\numa}{5mm}
+\onesquare{4.0}{4.0}{\cold}{\numd}{5mm}
+\onesquare{4.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{4.0}{5.0}{\colb}{\numb}{5mm}
+\onesquare{4.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{4.0}{6.0}{\colc}{\numc}{5mm}
+\onesquare{4.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{4.0}{7.0}{\colb}{\numb}{5mm}
+\onesquare{4.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{4.0}{8.0}{\colf}{\numf}{5mm}
+\onesquare{4.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{4.0}{9.0}{\colm}{\numm}{5mm}
+\onesquare{4.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{4.0}{10.0}{\colh}{\numh}{5mm}
+\onesquare{4.0}{10.5}{\cold}{\numd}{5mm}
+\onesquare{4.0}{11.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{2.5}{\colc}{\numc}{5mm}
+\onesquare{4.5}{3.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{3.5}{\colb}{\numb}{5mm}
+\onesquare{4.5}{4.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{4.5}{\colc}{\numc}{5mm}
+\onesquare{4.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{5.5}{\colj}{\numj}{5mm}
+\onesquare{4.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{6.5}{\cold}{\numd}{5mm}
+\onesquare{4.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{7.5}{\cole}{\nume}{5mm}
+\onesquare{4.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{8.5}{\colc}{\numc}{5mm}
+\onesquare{4.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{9.5}{\colb}{\numb}{5mm}
+\onesquare{4.5}{10.0}{\cola}{\numa}{5mm}
+\onesquare{4.5}{10.5}{\colc}{\numc}{5mm}
+\onesquare{4.5}{11.0}{\colb}{\numb}{5mm}
+\onesquare{4.5}{11.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{2.0}{\colb}{\numb}{5mm}
+\onesquare{5.0}{2.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{3.0}{\colg}{\numg}{5mm}
+\onesquare{5.0}{3.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{4.0}{\cole}{\nume}{5mm}
+\onesquare{5.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{5.0}{\colf}{\numf}{5mm}
+\onesquare{5.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{6.0}{\colb}{\numb}{5mm}
+\onesquare{5.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{7.0}{\colc}{\numc}{5mm}
+\onesquare{5.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{8.0}{\colb}{\numb}{5mm}
+\onesquare{5.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{9.0}{\cold}{\numd}{5mm}
+\onesquare{5.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{10.0}{\cole}{\nume}{5mm}
+\onesquare{5.0}{10.5}{\cola}{\numa}{5mm}
+\onesquare{5.0}{11.0}{\colk}{\numk}{5mm}
+\onesquare{5.0}{11.5}{\coll}{\numl}{5mm}
+\onesquare{5.0}{12.0}{\colb}{\numb}{5mm}
+\onesquare{5.5}{1.5}{\cole}{\nume}{5mm}
+\onesquare{5.5}{2.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{2.5}{\cold}{\numd}{5mm}
+\onesquare{5.5}{3.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{3.5}{\colc}{\numc}{5mm}
+\onesquare{5.5}{4.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{4.5}{\colb}{\numb}{5mm}
+\onesquare{5.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{5.5}{\colc}{\numc}{5mm}
+\onesquare{5.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{6.5}{\colh}{\numh}{5mm}
+\onesquare{5.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{7.5}{\coli}{\numi}{5mm}
+\onesquare{5.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{8.5}{\colg}{\numg}{5mm}
+\onesquare{5.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{9.5}{\colc}{\numc}{5mm}
+\onesquare{5.5}{10.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{10.5}{\colb}{\numb}{5mm}
+\onesquare{5.5}{11.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{11.5}{\colc}{\numc}{5mm}
+\onesquare{5.5}{12.0}{\cola}{\numa}{5mm}
+\onesquare{5.5}{12.5}{\cole}{\nume}{5mm}
+\onesquare{6.0}{1.0}{\colb}{\numb}{5mm}
+\onesquare{6.0}{1.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{2.0}{\colc}{\numc}{5mm}
+\onesquare{6.0}{2.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{3.0}{\colb}{\numb}{5mm}
+\onesquare{6.0}{3.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{4.0}{\colm}{\numm}{5mm}
+\onesquare{6.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{5.0}{\cold}{\numd}{5mm}
+\onesquare{6.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{6.0}{\cole}{\nume}{5mm}
+\onesquare{6.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{7.0}{\colb}{\numb}{5mm}
+\onesquare{6.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{8.0}{\colc}{\numc}{5mm}
+\onesquare{6.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{9.0}{\colb}{\numb}{5mm}
+\onesquare{6.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{10.0}{\colf}{\numf}{5mm}
+\onesquare{6.0}{10.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{11.0}{\cold}{\numd}{5mm}
+\onesquare{6.0}{11.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{12.0}{\colg}{\numg}{5mm}
+\onesquare{6.0}{12.5}{\cola}{\numa}{5mm}
+\onesquare{6.0}{13.0}{\colb}{\numb}{5mm}
+\onesquare{6.5}{0.5}{\colc}{\numc}{5mm}
+\onesquare{6.5}{1.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{1.5}{\colf}{\numf}{5mm}
+\onesquare{6.5}{2.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{2.5}{\coli}{\numi}{5mm}
+\onesquare{6.5}{3.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{3.5}{\colk}{\numk}{5mm}
+\onesquare{6.5}{4.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{4.5}{\colc}{\numc}{5mm}
+\onesquare{6.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{5.5}{\colb}{\numb}{5mm}
+\onesquare{6.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{6.5}{\colc}{\numc}{5mm}
+\onesquare{6.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{7.5}{\cold}{\numd}{5mm}
+\onesquare{6.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{8.5}{\cole}{\nume}{5mm}
+\onesquare{6.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{9.5}{\colj}{\numj}{5mm}
+\onesquare{6.5}{10.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{10.5}{\colc}{\numc}{5mm}
+\onesquare{6.5}{11.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{11.5}{\colb}{\numb}{5mm}
+\onesquare{6.5}{12.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{12.5}{\colc}{\numc}{5mm}
+\onesquare{6.5}{13.0}{\cola}{\numa}{5mm}
+\onesquare{6.5}{13.5}{\cold}{\numd}{5mm}
+\onesquare{7.0}{0.0}{\colh}{\numh}{5mm}
+\onesquare{7.0}{0.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{1.0}{\cold}{\numd}{5mm}
+\onesquare{7.0}{1.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{2.0}{\colb}{\numb}{5mm}
+\onesquare{7.0}{2.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{3.0}{\colc}{\numc}{5mm}
+\onesquare{7.0}{3.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{4.0}{\colb}{\numb}{5mm}
+\onesquare{7.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{5.0}{\colg}{\numg}{5mm}
+\onesquare{7.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{6.0}{\coll}{\numl}{5mm}
+\onesquare{7.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{7.0}{\colf}{\numf}{5mm}
+\onesquare{7.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{8.0}{\colb}{\numb}{5mm}
+\onesquare{7.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{9.0}{\colc}{\numc}{5mm}
+\onesquare{7.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{10.0}{\colb}{\numb}{5mm}
+\onesquare{7.0}{10.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{11.0}{\cole}{\nume}{5mm}
+\onesquare{7.0}{11.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{12.0}{\colh}{\numh}{5mm}
+\onesquare{7.0}{12.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{13.0}{\colm}{\numm}{5mm}
+\onesquare{7.0}{13.5}{\cola}{\numa}{5mm}
+\onesquare{7.0}{14.0}{\colb}{\numb}{5mm}
+\onesquare{7.5}{0.5}{\colb}{\numb}{5mm}
+\onesquare{7.5}{1.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{1.5}{\colc}{\numc}{5mm}
+\onesquare{7.5}{2.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{2.5}{\colj}{\numj}{5mm}
+\onesquare{7.5}{3.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{3.5}{\cold}{\numd}{5mm}
+\onesquare{7.5}{4.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{4.5}{\cole}{\nume}{5mm}
+\onesquare{7.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{5.5}{\colc}{\numc}{5mm}
+\onesquare{7.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{6.5}{\colb}{\numb}{5mm}
+\onesquare{7.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{7.5}{\colc}{\numc}{5mm}
+\onesquare{7.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{8.5}{\coln}{\numn}{5mm}
+\onesquare{7.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{9.5}{\cold}{\numd}{5mm}
+\onesquare{7.5}{10.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{10.5}{\coli}{\numi}{5mm}
+\onesquare{7.5}{11.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{11.5}{\colc}{\numc}{5mm}
+\onesquare{7.5}{12.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{12.5}{\colb}{\numb}{5mm}
+\onesquare{7.5}{13.0}{\cola}{\numa}{5mm}
+\onesquare{7.5}{13.5}{\colc}{\numc}{5mm}
+\onesquare{8.0}{1.0}{\cole}{\nume}{5mm}
+\onesquare{8.0}{1.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{2.0}{\colg}{\numg}{5mm}
+\onesquare{8.0}{2.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{3.0}{\colb}{\numb}{5mm}
+\onesquare{8.0}{3.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{4.0}{\colc}{\numc}{5mm}
+\onesquare{8.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{5.0}{\colb}{\numb}{5mm}
+\onesquare{8.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{6.0}{\cold}{\numd}{5mm}
+\onesquare{8.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{7.0}{\cole}{\nume}{5mm}
+\onesquare{8.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{8.0}{\colk}{\numk}{5mm}
+\onesquare{8.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{9.0}{\colb}{\numb}{5mm}
+\onesquare{8.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{10.0}{\colc}{\numc}{5mm}
+\onesquare{8.0}{10.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{11.0}{\colb}{\numb}{5mm}
+\onesquare{8.0}{11.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{12.0}{\cold}{\numd}{5mm}
+\onesquare{8.0}{12.5}{\cola}{\numa}{5mm}
+\onesquare{8.0}{13.0}{\cole}{\nume}{5mm}
+\onesquare{8.5}{1.5}{\colb}{\numb}{5mm}
+\onesquare{8.5}{2.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{2.5}{\colc}{\numc}{5mm}
+\onesquare{8.5}{3.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{3.5}{\colf}{\numf}{5mm}
+\onesquare{8.5}{4.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{4.5}{\colh}{\numh}{5mm}
+\onesquare{8.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{5.5}{\coli}{\numi}{5mm}
+\onesquare{8.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{6.5}{\colc}{\numc}{5mm}
+\onesquare{8.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{7.5}{\colb}{\numb}{5mm}
+\onesquare{8.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{8.5}{\colc}{\numc}{5mm}
+\onesquare{8.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{9.5}{\cole}{\nume}{5mm}
+\onesquare{8.5}{10.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{10.5}{\colg}{\numg}{5mm}
+\onesquare{8.5}{11.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{11.5}{\colf}{\numf}{5mm}
+\onesquare{8.5}{12.0}{\cola}{\numa}{5mm}
+\onesquare{8.5}{12.5}{\colc}{\numc}{5mm}
+\onesquare{9.0}{2.0}{\cold}{\numd}{5mm}
+\onesquare{9.0}{2.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{3.0}{\cole}{\nume}{5mm}
+\onesquare{9.0}{3.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{4.0}{\colb}{\numb}{5mm}
+\onesquare{9.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{5.0}{\colc}{\numc}{5mm}
+\onesquare{9.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{6.0}{\colb}{\numb}{5mm}
+\onesquare{9.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{7.0}{\colg}{\numg}{5mm}
+\onesquare{9.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{8.0}{\cold}{\numd}{5mm}
+\onesquare{9.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{9.0}{\colh}{\numh}{5mm}
+\onesquare{9.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{10.0}{\colb}{\numb}{5mm}
+\onesquare{9.0}{10.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{11.0}{\colc}{\numc}{5mm}
+\onesquare{9.0}{11.5}{\cola}{\numa}{5mm}
+\onesquare{9.0}{12.0}{\colb}{\numb}{5mm}
+\onesquare{9.5}{2.5}{\colb}{\numb}{5mm}
+\onesquare{9.5}{3.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{3.5}{\colc}{\numc}{5mm}
+\onesquare{9.5}{4.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{4.5}{\cold}{\numd}{5mm}
+\onesquare{9.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{5.5}{\cole}{\nume}{5mm}
+\onesquare{9.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{6.5}{\colj}{\numj}{5mm}
+\onesquare{9.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{7.5}{\colc}{\numc}{5mm}
+\onesquare{9.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{8.5}{\colb}{\numb}{5mm}
+\onesquare{9.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{9.5}{\colc}{\numc}{5mm}
+\onesquare{9.5}{10.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{10.5}{\cold}{\numd}{5mm}
+\onesquare{9.5}{11.0}{\cola}{\numa}{5mm}
+\onesquare{9.5}{11.5}{\cole}{\nume}{5mm}
+\onesquare{10.0}{3.0}{\coln}{\numn}{5mm}
+\onesquare{10.0}{3.5}{\cola}{\numa}{5mm}
+\onesquare{10.0}{4.0}{\colg}{\numg}{5mm}
+\onesquare{10.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{10.0}{5.0}{\colb}{\numb}{5mm}
+\onesquare{10.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{10.0}{6.0}{\colc}{\numc}{5mm}
+\onesquare{10.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{10.0}{7.0}{\colb}{\numb}{5mm}
+\onesquare{10.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{10.0}{8.0}{\colm}{\numm}{5mm}
+\onesquare{10.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{10.0}{9.0}{\colf}{\numf}{5mm}
+\onesquare{10.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{10.0}{10.0}{\coll}{\numl}{5mm}
+\onesquare{10.0}{10.5}{\cola}{\numa}{5mm}
+\onesquare{10.0}{11.0}{\colb}{\numb}{5mm}
+\onesquare{10.5}{3.5}{\colb}{\numb}{5mm}
+\onesquare{10.5}{4.0}{\cola}{\numa}{5mm}
+\onesquare{10.5}{4.5}{\colc}{\numc}{5mm}
+\onesquare{10.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{10.5}{5.5}{\colf}{\numf}{5mm}
+\onesquare{10.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{10.5}{6.5}{\cold}{\numd}{5mm}
+\onesquare{10.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{10.5}{7.5}{\cole}{\nume}{5mm}
+\onesquare{10.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{10.5}{8.5}{\colc}{\numc}{5mm}
+\onesquare{10.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{10.5}{9.5}{\colb}{\numb}{5mm}
+\onesquare{10.5}{10.0}{\cola}{\numa}{5mm}
+\onesquare{10.5}{10.5}{\colc}{\numc}{5mm}
+\onesquare{11.0}{4.0}{\cole}{\nume}{5mm}
+\onesquare{11.0}{4.5}{\cola}{\numa}{5mm}
+\onesquare{11.0}{5.0}{\colk}{\numk}{5mm}
+\onesquare{11.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{11.0}{6.0}{\colb}{\numb}{5mm}
+\onesquare{11.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{11.0}{7.0}{\colc}{\numc}{5mm}
+\onesquare{11.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{11.0}{8.0}{\colb}{\numb}{5mm}
+\onesquare{11.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{11.0}{9.0}{\cold}{\numd}{5mm}
+\onesquare{11.0}{9.5}{\cola}{\numa}{5mm}
+\onesquare{11.0}{10.0}{\cole}{\nume}{5mm}
+\onesquare{11.5}{4.5}{\colb}{\numb}{5mm}
+\onesquare{11.5}{5.0}{\cola}{\numa}{5mm}
+\onesquare{11.5}{5.5}{\colc}{\numc}{5mm}
+\onesquare{11.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{11.5}{6.5}{\colh}{\numh}{5mm}
+\onesquare{11.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{11.5}{7.5}{\coli}{\numi}{5mm}
+\onesquare{11.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{11.5}{8.5}{\colg}{\numg}{5mm}
+\onesquare{11.5}{9.0}{\cola}{\numa}{5mm}
+\onesquare{11.5}{9.5}{\colc}{\numc}{5mm}
+\onesquare{12.0}{5.0}{\cold}{\numd}{5mm}
+\onesquare{12.0}{5.5}{\cola}{\numa}{5mm}
+\onesquare{12.0}{6.0}{\cole}{\nume}{5mm}
+\onesquare{12.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{12.0}{7.0}{\colb}{\numb}{5mm}
+\onesquare{12.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{12.0}{8.0}{\colc}{\numc}{5mm}
+\onesquare{12.0}{8.5}{\cola}{\numa}{5mm}
+\onesquare{12.0}{9.0}{\colb}{\numb}{5mm}
+\onesquare{12.5}{5.5}{\colg}{\numg}{5mm}
+\onesquare{12.5}{6.0}{\cola}{\numa}{5mm}
+\onesquare{12.5}{6.5}{\colc}{\numc}{5mm}
+\onesquare{12.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{12.5}{7.5}{\colf}{\numf}{5mm}
+\onesquare{12.5}{8.0}{\cola}{\numa}{5mm}
+\onesquare{12.5}{8.5}{\cole}{\nume}{5mm}
+\onesquare{13.0}{6.0}{\colb}{\numb}{5mm}
+\onesquare{13.0}{6.5}{\cola}{\numa}{5mm}
+\onesquare{13.0}{7.0}{\cold}{\numd}{5mm}
+\onesquare{13.0}{7.5}{\cola}{\numa}{5mm}
+\onesquare{13.0}{8.0}{\colb}{\numb}{5mm}
+\onesquare{13.5}{6.5}{\coll}{\numl}{5mm}
+\onesquare{13.5}{7.0}{\cola}{\numa}{5mm}
+\onesquare{13.5}{7.5}{\colc}{\numc}{5mm}
+\onesquare{14.0}{7.0}{\cole}{\nume}{5mm}
+	\end{tikzpicture}
+
+
+\end{document}
