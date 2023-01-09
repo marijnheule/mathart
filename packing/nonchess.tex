@@ -4,7 +4,7 @@
 %
 \documentclass[tikz,border=2pt]{standalone}
 
-\usepackage[outline]{contour}
+\usepackage{pdfrender}
 
 
 %\pagestyle{headings}
@@ -179,6 +179,10 @@
  
  \begin{document}
 
+
+  \textpdfrender{
+    TextRenderingMode=FillStroke,
+  }{
 	\begin{tikzpicture}[rotate=45,transform shape]
 \onesquare{0.0}{7.0}{\colb}{\numb}{5mm}
 \onesquare{0.5}{6.5}{\colc}{\numc}{5mm}
@@ -602,5 +606,7 @@
 \onesquare{13.5}{7.5}{\colc}{\numc}{5mm}
 \onesquare{14.0}{7.0}{\cole}{\nume}{5mm}
 	\end{tikzpicture}
+	
+	}
 
 \end{document}
