@@ -24,7 +24,7 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{patterns}
 
-
+\usepackage{euler}
 
 %% code listing stuff
 \usepackage{listings}
@@ -109,33 +109,34 @@
 \newcommand{\colf}{clearyellow} %6
 \newcommand{\colg}{midyellow!80!redorange} %7
 
+\newcommand{\size}{\footnotesize}
 
 \newcommand{\tr}{\textsc{TR}}
 \newcommand{\ptr}{\textsc{ptr}}
 
 \newcommand{\step}[2]{\langle\mathsf{#1},#2\rangle}
 
-\newcommand{\numa}{\textcolor{white}{1}}
-\newcommand{\numb}{\textcolor{white}{2}}
-\newcommand{\numc}{\textcolor{white}{3}}
-\newcommand{\numd}{\textcolor{white}{4}}
-\newcommand{\nume}{\textcolor{white}{5}}
-\newcommand{\numf}{\textcolor{white}{6}}
-\newcommand{\numg}{\textcolor{white}{7}}
+\newcommand{\numa}{\textcolor{white}{\size $1$}}
+\newcommand{\numb}{\textcolor{white}{\size$2$}}
+\newcommand{\numc}{\textcolor{white}{\size$3$}}
+\newcommand{\numd}{\textcolor{white}{\size$4$}}
+\newcommand{\nume}{\textcolor{white}{\size$5$}}
+\newcommand{\numf}{\textcolor{white}{\size$6$}}
+\newcommand{\numg}{\textcolor{white}{\size$7$}}
 \newcommand{\colh}{midgreen}
-\newcommand{\numh}{\textcolor{white}{8}}
+\newcommand{\numh}{\textcolor{white}{\size$8$}}
 \newcommand{\coli}{darkturqoise!70!white}
-\newcommand{\numi}{\textcolor{white}{9}}
+\newcommand{\numi}{\textcolor{white}{\size$9$}}
 \newcommand{\colj}{darkred}
-\newcommand{\numj}{\textcolor{white}{\!10\!}}
+\newcommand{\numj}{\textcolor{white}{\size\!$10$\!}}
 \newcommand{\colk}{lightpurple}
-\newcommand{\numk}{\textcolor{white}{\!11\!}}
+\newcommand{\numk}{\textcolor{white}{\size\!$11$\!}}
 \newcommand{\coll}{lightblue}
-\newcommand{\numl}{\textcolor{white}{\!12\!}}
+\newcommand{\numl}{\textcolor{white}{\size\!$12$\!}}
 \newcommand{\colm}{greypurple!70!white}
-\newcommand{\numm}{\textcolor{white}{\!13\!}}
+\newcommand{\numm}{\textcolor{white}{\size\!$13$\!}}
 \newcommand{\coln}{softgreen}
-\newcommand{\numn}{\textcolor{white}{\!14\!}}
+\newcommand{\numn}{\textcolor{white}{\size\!$14$\!}}
 
 % 					\node[draw, minimum width=3mm, minimum height=3mm, fill=#4, opacity=0.5] (\i\j) at (#2 + 0.3*\j-0.3*\i, #3 + 0.3*#1 - 0.3*\i) {};
 % 					\node[draw, minimum width=3mm, minimum height=3mm, fill=#4, opacity=0.5] (\i\j) at (#2 + 0.3*\j-0.3*\i, #3 + -0.3*#1+0.3*\i) {};
