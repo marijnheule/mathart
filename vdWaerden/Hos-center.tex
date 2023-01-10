@@ -1,0 +1,115 @@
+\documentclass[tikz, border=5pt]{standalone}
+
+
+%\pagestyle{headings}
+%
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{tkz-euclide}
+\usetikzlibrary{fit}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+
+\usepackage{euler}
+
+\makeatletter
+\define@key{triangularkeys}{x}{\def\myx{#1}}
+\define@key{triangularkeys}{y}{\def\myy{#1}}
+\tikzdeclarecoordinatesystem{triangular}%
+{%
+\setkeys{triangularkeys}{#1}%
+\pgfpointadd{\pgfpointxy{\myx}{0}}{\pgfpointpolarxy{60}{\myy}}
+}
+\makeatother
+\tikzaliascoordinatesystem{tri}{triangular}
+ 
+ \begin{document}
+
+	\begin{tikzpicture}[rotate=270]
+
+
+%\node (aa) at (tri cs:x=1,y=0) {aa};
+%\node (ab) at (tri cs:x=2,y=0) {ab};
+%\node (ac) at (tri cs:x=3,y=0) {ac};
+%\node (ad) at (tri cs:x=4,y=0) {ad};
+%\node (ae) at (tri cs:x=5,y=0) {ae};
+%\node (af) at (tri cs:x=6,y=0) {af};
+%\node (ag) at (tri cs:x=7,y=0) {ag};
+%
+%\node (ba) at (tri cs:x=0,y=1) {ba};
+%\node (bb) at (tri cs:x=1,y=1) {bb};
+%\node (bc) at (tri cs:x=2,y=1) {bc};
+%\node (bd) at (tri cs:x=3,y=1) {bd};
+%\node (be) at (tri cs:x=4,y=1) {be};
+%\node (bf) at (tri cs:x=5,y=1) {bf};
+%\node (bg) at (tri cs:x=6,y=1) {bg};
+%
+%\node (ca) at (tri cs:x=0,y=2) {ca};
+%\node (cb) at (tri cs:x=1,y=2) {cb};
+%\node (cc) at (tri cs:x=2,y=2) {cc};
+%\node (cd) at (tri cs:x=3,y=2) {cd};
+%\node (ce) at (tri cs:x=4,y=2) {ce};
+%\node (cf) at (tri cs:x=5,y=2) {cf};
+%\node (cg) at (tri cs:x=6,y=2) {cg};
+%
+%\node (da) at (tri cs:x=-1,y=3) {da};
+%\node (db) at (tri cs:x=0,y=3) {db};
+%\node (dc) at (tri cs:x=1,y=3) {dc};
+%\node (dd) at (tri cs:x=2,y=3) {dd};
+%\node (de) at (tri cs:x=3,y=3) {de};
+%\node (df) at (tri cs:x=4,y=3) {df};
+%\node (dg) at (tri cs:x=5,y=3) {dg};
+%
+%\node (ea) at (tri cs:x=-1,y=4) {ea};
+%\node (eb) at (tri cs:x=0,y=4) {eb};
+%\node (ec) at (tri cs:x=1,y=4) {ec};
+%\node (ed) at (tri cs:x=2,y=4) {ed};
+%\node (ee) at (tri cs:x=3,y=4) {ee};
+%\node (ef) at (tri cs:x=4,y=4) {ef};
+%\node (eg) at (tri cs:x=5,y=4) {eg};
+
+%\draw [blue!50!black, line width=4pt] (ac) -- (ab) -- (bb) -- (cb) -- (ca) -- (da) -- (ea)
+%          -- (eb) -- (ec) -- (ed) -- (de) -- (df) -- (dg) -- (cg)
+%          -- (cf) -- (bf) -- (ae) -- (be) -- (bd) -- (bc);
+          
+%\draw [blue!50!black, line width=4pt] (ad) -- (bd) -- (cc) --(dc) -- (eb);
+%\draw [blue!50!black, line width=4pt] (ee) -- (de) -- (cd) --(bd);
+
+\draw [blue!50!black, line width=4.3pt] (tri cs:x=3,y=0) -- (tri cs:x=2,y=0) -- (tri cs:x=1,y=1) --  (tri cs:x=1,y=2) (tri cs:x=1,y=2) -- (tri cs:x=0,y=2) -- (tri cs:x=-1,y=3) -- (tri cs:x=-1,y=4)
+        -- (tri cs:x=0,y=4) -- (tri cs:x=1,y=4) -- (tri cs:x=2,y=4) -- (tri cs:x=3,y=3) -- (tri cs:x=4,y=3) -- (tri cs:x=5,y=3) -- (tri cs:x=6,y=2)
+        -- (tri cs:x=5,y=2) -- (tri cs:x=5,y=1) -- (tri cs:x=5,y=0) --  (tri cs:x=4,y=1) -- (tri cs:x=3,y=1) -- (tri cs:x=2,y=1) -- cycle;
+
+\draw [blue!50!black, line width=4.3pt, shorten <=-0.5mm] (tri cs:x=4,y=0) -- (tri cs:x=3,y=1) -- (tri cs:x=2,y=2) -- (tri cs:x=1,y=3) -- (tri cs:x=0,y=4);
+\draw [blue!50!black, line width=4.3pt, shorten <=-0.5mm] (tri cs:x=3,y=4) -- (tri cs:x=3,y=3) -- (tri cs:x=3,y=2) -- (tri cs:x=3,y=1);
+\draw [blue!50!black, line width=4.3pt] (tri cs:x=0,y=2) -- (tri cs:x=0,y=3) -- (tri cs:x=0,y=4);
+\draw [blue!50!black, line width=4.3pt] (tri cs:x=3,y=3) -- (tri cs:x=2,y=3) -- (tri cs:x=1,y=3) -- (tri cs:x=0,y=3) -- (tri cs:x=-1,y=4);
+\draw [blue!50!black, line width=4.3pt] (tri cs:x=5,y=1) -- (tri cs:x=4,y=1) -- (tri cs:x=3,y=2) -- (tri cs:x=2,y=3);
+\draw [blue!50!black, line width=4.3pt] (tri cs:x=5,y=2) -- (tri cs:x=4,y=2) -- (tri cs:x=3,y=2) -- (tri cs:x=2,y=2) (tri cs:x=2,y=2) -- (tri cs:x=2,y=3);
+\draw [blue!50!black, line width=4.3pt] (tri cs:x=5,y=1) -- (tri cs:x=4,y=2) -- (tri cs:x=3,y=3) (tri cs:x=4,y=2) -- (tri cs:x=4,y=3);
+\draw [blue!50!black, line width=4.3pt] (tri cs:x=2,y=0) -- (tri cs:x=2,y=1) -- (tri cs:x=1,y=1);
+
+%\draw [blue!50!black, line width=4pt] (tri cs:x=0,y=2)--(tri cs:x=1,y=2) -- (tri cs:x=2,y=2) -- (tri cs:x=3,y=2) -- (tri cs:x=4,y=2) ;
+%
+%\draw [blue!50!black, line width=4pt] (tri cs:x=1,y=1)--(tri cs:x=1,y=2) -- (tri cs:x=0,y=3) -- (tri cs:x=0,y=2) -- (tri cs:x=1,y=1) -- (tri cs:x=2,y=1);
+%
+%\draw [blue, line width=4pt] (tri cs:x=-1,y=3)--(tri cs:x=-1,y=4) --(tri cs:x=-2,y=5) --(tri cs:x=-2,y=4)--(tri cs:x=-1,y=3)--(tri cs:x=0,y=3) -- (tri cs:x=1,y=2);
+
+%
+%\draw [thick,blue] (tri cs:x=1,y=1)--(tri cs:x=1,y=2) -- (tri cs:x=2,y=1) -- (tri cs:x=1,y=1) -- (tri cs:x=1,y=2) ;
+%% \draw [thick,violet] (tri cs:x=1,y=2)--(tri cs:x=2,y=1);
+%\draw [thick,violet] (tri cs:x=2,y=1)--(tri cs:x=2,y=2);
+%\draw [thick,violet] (tri cs:x=2,y=2)--(tri cs:x=3,y=1);
+
+
+	\end{tikzpicture}
+
+
+\end{document}
